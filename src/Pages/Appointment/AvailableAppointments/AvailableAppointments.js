@@ -3,12 +3,11 @@ import { format } from "date-fns";
 import React, { useState } from "react";
 import BookingModal from "../BookingModal/BookingModal";
 import AppointmentOption from "./AppointmentOption";
-
 const AvailableAppointments = ({ selectDate }) => {
   // const [appointmentOptions, SetappointmentOptions] = useState([]);
   const [treatment, SetTreatment] = useState(null);
 
-  // for caching
+  // for caching react quary and load data
   const { data: appointmentOptions = [] } = useQuery({
     queryKey: ["appointmentOptions"],
     queryFn: async () => {
@@ -17,7 +16,6 @@ const AvailableAppointments = ({ selectDate }) => {
       return data;
     },
   });
-
   return (
     <section className="my-16">
       <p className="text-center text-primary text-secondary font-blod">
