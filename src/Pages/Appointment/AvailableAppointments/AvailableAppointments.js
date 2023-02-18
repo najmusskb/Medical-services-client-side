@@ -4,14 +4,14 @@ import React, { useState } from "react";
 import BookingModal from "../BookingModal/BookingModal";
 import AppointmentOption from "./AppointmentOption";
 const AvailableAppointments = ({ selectDate }) => {
-  // const [appointmentOptions, SetappointmentOptions] = useState([]);
   const [treatment, SetTreatment] = useState(null);
-
-  // for caching react quary and load data
+  const date = format(selectDate, "PP");
   const { data: appointmentOptions = [] } = useQuery({
-    queryKey: ["appointmentOptions"],
+    queryKey: ["appointmentOptions", date],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/appointmentOptions");
+      const res = await fetch(
+        `http://localhost:5000/appointmentOptions?date=${date}`
+      );
       const data = await res.json();
       return data;
     },
