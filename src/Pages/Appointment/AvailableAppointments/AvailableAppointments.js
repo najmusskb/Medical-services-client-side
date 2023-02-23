@@ -20,11 +20,11 @@ const AvailableAppointments = ({ selectDate }) => {
       const data = await res.json();
       return data;
     },
-
-    if(isLoading) {
-      return <Loading></Loading>;
-    },
   });
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <section className="my-16">
       <p className="text-center text-primary text-secondary font-blod">
@@ -51,5 +51,4 @@ const AvailableAppointments = ({ selectDate }) => {
     </section>
   );
 };
-
 export default AvailableAppointments;
